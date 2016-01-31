@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <h2><%= @brewery.name %></h2>
 
 <p> Number of beers: <%= @brewery.beers.count %> </p>
@@ -10,6 +11,16 @@
 <p>
   <% @brewery.beers.each do |beer| %>
       <%= link_to beer.name, beer %>
+  <% end %>
+</p>
+
+
+<p>
+  <% if @brewery.ratings.empty? %>
+      Brewery has no ratings yet!
+  <% else %>
+      <%=@brewery.average_rating %>
+
   <% end %>
 </p>
 

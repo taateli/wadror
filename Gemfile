@@ -9,6 +9,13 @@ group :production do
    gem 'rails_12factor'
 end
 
+group :development, :test do
+  gem "better_errors"
+
+  #...
+end
+
+
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
