@@ -86,4 +86,4 @@ class BreweriesController < ApplicationController
     end
   end
   end
-  
+
