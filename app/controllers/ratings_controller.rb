@@ -1,7 +1,6 @@
 class RatingsController < ApplicationController
   def index
     @ratings = Rating.all
-    @user = User.all
   end
 
   def new
@@ -22,9 +21,8 @@ class RatingsController < ApplicationController
   end
 
   def destroy
-      rating = Rating.find params[:id]
-      rating.delete if current_user == rating.user
-      redirect_to :back
+    rating = Rating.find(params[:id])
+    rating.delete if current_user == rating.user
+    redirect_to :back
   end
-
 end

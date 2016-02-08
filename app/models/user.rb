@@ -2,14 +2,18 @@ class User < ActiveRecord::Base
   include RatingAverage
 
   validates :username, uniqueness: true,
-            length: { minimum: 3, maximum: 15 }
-  validate :password_complexity
-  def password_complexity
-    if password.present? and not password.match(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d){4,}.+\z/)
-      errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
-    end
-  end
-  has_secure_password
+                       length: { minimum: 3, maximum: 15 }
 
-  has_many :ratings, dependent: :destroy   # käyttäjällä on monta ratingia
+  validates :password, length: { minimum: 4 },
+                       format: {
+                          with: /\d.*[A-Z]|[A-Z].*\d/,
+                          message: "has to contain one number and one upper case letter"
+                       }
+
+  has_many :ratings, dependent: :destroy
+  has_many :beers, through: :ratings
+  has_many :memberships
+  has_many :beer_clubs, through: :memberships
+
+  has_secure_password
 end
