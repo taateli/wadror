@@ -1,19 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '~> 3.0'
-end
-
-group :test do
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'launchy'
 end
 
 group :production do
@@ -27,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,6 +45,14 @@ group :development, :test do
   gem 'byebug'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
+
+gem 'simplecov', require: false
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -60,3 +61,6 @@ group :development do
   gem 'spring'
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
